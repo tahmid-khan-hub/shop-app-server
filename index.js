@@ -25,6 +25,11 @@ async function run() {
 
     const ProductsCollection = client.db("shopApp").collection("products");
 
+    app.get("/products", async(req, res) => {
+        const result = await ProductsCollection.find().toArray();
+        res.send(result);
+    })
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log(
