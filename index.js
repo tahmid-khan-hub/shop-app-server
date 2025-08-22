@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const { ObjectId } = require("mongodb");
-const port = 3000;
+const port = 5000;
 
 // middleware
 app.use(cors());
@@ -25,11 +25,10 @@ async function run() {
 
     const ProductsCollection = client.db("shopApp").collection("products");
 
-    app.get("/products", async(req, res) => {
-        const result = await ProductsCollection.find().toArray();
-        res.send(result);
-    })
-
+    app.get("/products", async (req, res) => {
+      const result = await ProductsCollection.find().toArray();
+      res.send(result);
+    });
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log(
