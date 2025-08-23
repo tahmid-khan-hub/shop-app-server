@@ -35,6 +35,11 @@ async function run() {
       res.send(result);
     });
 
+    app.get("/products/:id", async(req, res) => {
+      const { id } = req.params;
+      const product = await ProductsCollection.findOne({ _id: new ObjectId(id) });
+      res.send(product);
+    })
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
