@@ -7,7 +7,7 @@ const { ObjectId } = require("mongodb");
 const port = 5000;
 
 // middleware
-app.use(cors(["http://localhost:3000", ]));
+app.use(cors(["http://localhost:3000", "https://shop-app-green-nine.vercel.app"]));
 app.use(express.json());
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.zc7c13h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
