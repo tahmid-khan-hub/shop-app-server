@@ -19,7 +19,6 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
-
 async function run() {
   try {
 
@@ -29,6 +28,14 @@ async function run() {
       const result = await ProductsCollection.find().toArray();
       res.send(result);
     });
+
+    app.post("/products", async (req, res) => {
+      const newProduct = req.body;
+      const result = await ProductsCollection.insertOne(newProduct);
+      res.send(result);
+    });
+
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log(
